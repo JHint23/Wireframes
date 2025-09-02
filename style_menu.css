@@ -124,7 +124,7 @@
     transition: all 0.3s ease;
     margin-left: var(--sidebar-collapsed-width);
     width: calc(100% - var(--sidebar-collapsed-width));
-    z-index: 2;
+    z-index: 3;
 }
 .main-content.expanded .header{
     margin-left: var(--sidebar-expanded-width);
@@ -142,7 +142,7 @@
 }
 
 .sidebar{
-    z-index: 3;
+    z-index: 4;
 }
 @media (max-width:992px) {
     .sidebar{
