@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Iconos de Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- CSS de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style_menu.css">
+    <link rel="stylesheet" href="dashbard.css">
+    <link rel="stylesheet" href="cursos.css">
+    <link rel="stylesheet" href="document.css">
+    <link rel="stylesheet" href="chats.css">
+    <title>student</title>
+</head>
+
+<body class="" data-bs-theme="">
+    <!-- Contenedor principal que divide la pantalla en dos columnas -->
+    <div class="container-fluid d-flex flex-row m-0 p-0  ">
+        <!-- Side Menu -->
+        <div class="sidebar collapsed d-flex flex-column vh-100 align-items-start border-4 border-end bg-body fixed-top"
+            id="sidebar">
+            <!-- Encabezado del menú -->
+            <div
+                class="header d-flex flex-lg-row flex-row-reverse align-items-center justify-content-between mx-lg-auto px-lg-0 px-4 border-2 border-bottom pb-4 mt-4">
+
+                <!-- Logo y texto -->
+                <div class="branding d-flex flex-column text-nowrap text-end">
+                    <div class="fw-bold fs-3 text-decoration-underline">
+                        <i class="bi bi-mortarboard-fill"> </i>
+                        <span>EduTemplate</span>
+                    </div>
+                    <p class="text-muted text-end m-0 fs-6">
+                        Portal de estudiante
+                    </p>
+                </div>
+                <!-- Botón toggle -->
+                <div class="icon">
+                    <button class="w-100 btn rounded-4 px-0 py-2 " id="toggleMenu" type="button">
+                        <i id="toggleIcon" class="bi bi-arrow-bar-right fs-3"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Cuerpo del menú -->
+            <div class="body mx-auto d-flex flex-column">
+                <button
+                    class="item overflow-hidden px-0 btn d-flex btn-primary border-2 border rounded-4 my-2 py-2 fs-5"
+                    type="submit" id="dashboardBtn">
+                    <i class=" icon bi bi-grid-1x2"></i><!--house-->
+                    <span class="hide text-start">Dashboard</span>
+                </button>
+                <button class="item overflow-hidden px-0 btn d-flex border-2 border rounded-4 my-2 py-2 fs-5"
+                    type="submit" id="cursosBtn">
+                    <i class=" icon bi bi-journals"></i>
+                    <span class="hide text-start">Cursos</span>
+                </button>
+                <button class="item overflow-hidden px-0 btn d-flex  border-2 border rounded-4 my-2 py-2 fs-5"
+                    type="submit" id="calendarioBtn">
+                    <i class=" icon bi bi-calendar-range"></i>
+                    <span class="hide text-start">Calendario</span>
+                </button>
+                <button class="item overflow-hidden px-0 btn d-flex  border-2 border rounded-4 my-2 py-2 fs-5"
+                    type="submit" id="progresoBtn">
+                    <i class=" icon bi bi-list-check"></i>
+                    <span class="hide text-start">Progreso</span>
+                </button>
+                <button class="item overflow-hidden px-0 btn d-flex  border-2 border rounded-4 my-2 py-2 fs-5"
+                    type="submit" id="chatsBtn">
+                    <i class=" icon bi bi-chat-dots-fill"></i>
+                    <span class="hide text-start">Chats</span>
+                </button>
+                <button class="item overflow-hidden px-0 btn d-flex  border-2 border rounded-4 my-2 py-2 fs-5"
+                    type="submit" id="perfilBtn">
+                    <i class=" icon bi bi-person-fill"></i>
+                    <span class="hide text-start">Perfil</span>
+                </button>
+                <button class="item overflow-hidden px-0 btn d-flex  border-2 border rounded-4 my-2 py-2 fs-5"
+                    type="submit" id="configBtn">
+                    <i class=" icon bi bi-gear-fill"></i>
+                    <span class="hide text-start">Configuración</span>
+                </button>
+            </div>
+            <!--Pie de pagina del menú-->
+            <div class="footer mt-auto mx-auto d-flex border-2 border-top py-3">
+                <div class="item overflow-hidden d-flex p-0 align-items-center w-100 ">
+                    <a class="btn text-danger rounded-4 border border-2 m-0 p-0 d-flex align-items-center w-100"
+                        href="index.html">
+                        <i class="icon bi bi-box-arrow-right fs-3"></i>
+                        <span class="hide-w hide-o fs-5 text-start text-nowrap">Cerrar Sesión</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--Notificaciones-->
+        <div class="notification offcanvas offcanvas-end rounded-start-5" tabindex="-1" id="notificationsMenu"
+            aria-labelledby="notificationsMenuLabel">
+            <div class="offcanvas-header  border-bottom border-3 mx-3 pb-4">
+                <h5 class="offcanvas-title" id="notificationsMenuLabel">Notificaciones</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+            </div>
+            <div class="offcanvas-body ">
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action my-2 border-3 border d-flex gap-3 py-3"
+                        aria-current="true">
+                        <i class="bi bi-envelope-fill text-primary fs-5"></i>
+                        <div class="d-flex gap-2 w-100 justify-content-between">
+                            <div>
+                                <h6 class="mb-0">Nuevo Mensaje</h6>
+                                <p class="mb-0 opacity-75">Tienes un nuevo mensaje de María.</p>
+                            </div>
+                            <small class="opacity-50 text-nowrap">hace 3 min</small>
+                        </div>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action my-2 border-3 border d-flex gap-3 py-3">
+                        <i class="bi bi-box-fill text-warning fs-5"></i>
+                        <div class="d-flex gap-2 w-100 justify-content-between">
+                            <div>
+                                <h6 class="mb-0">Actualización</h6>
+                                <p class="mb-0 opacity-75">El estado de tu pedido ha cambiado.</p>
+                            </div>
+                            <small class="opacity-50 text-nowrap">hace 1 hora</small>
+                        </div>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action my-2 border-3 border d-flex gap-3 py-3">
+                        <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                        <div class="d-flex gap-2 w-100 justify-content-between">
+                            <div>
+                                <h6 class="mb-0">Tarea Completada</h6>
+                                <p class="mb-0 opacity-75">Tu tarea "Diseño web" fue terminada.</p>
+                            </div>
+                            <small class="opacity-50 text-nowrap">ayer</small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Main Content -->
+        <div class="container-fluid main-content p-0 m-0">
+            <!--header -->
+            <div
+                class="header fixed-top bg-body container-fluid p-0 py-2 d-flex align-items-center justify-content-start border-2 border-bottom">
+                <!--definir y reconfigurar este tamaño para que concuerde con el menu lateral-->
+                <button class="btn mx-lg-4 border-0 my-0 p-lg-0 p-3 " id="toggleMenu-mobile">
+                    <img style="width: auto; height: 45px;" class="rounded-circle m-0"
+                        src="https://api.dicebear.com/9.x/thumbs/svg?seed=Jocelyn" alt="">
+                </button>
+                <div class="d-flex flex-column">
+                    <div></div>
+                    <span class="fw-bold fs-4">
+                        Dashboard
+                    </span>
+                    <span class="fs-6">Bienvenido de nuevo, María García</span>
+                </div>
+                <button class="btn border-2 border rounded-5 fs-4 ms-auto mx-3 position-relative" type="button"
+                    data-bs-toggle="offcanvas" data-bs-target="#notificationsMenu" aria-controls="notificationsMenu">
+                    <i class="bi bi-bell"></i>
+                    <span class="fs-6 position-absolute top-0 m-2 translate-middle badge rounded-pill bg-danger">
+                        3
+                    </span>
+                </button>
+            </div>
+
+            <div class="content">
+                <div class="dashboard p-3 seccion" id="dashboard">
+                    <div class="grid-4-2">
+                        <div
+                            class="position-relative grid-it border-2 border rounded-3 d-flex flex-column justify-content-between p-3">
+                            <p class="fw-bold fs-5">Cursos Activos</p>
+                            <p class="fs-3 fw-bold m-0">6</p>
+                            <p class="text-muted fs-6 m-0">+1 desde el período pasado</p>
+                            <i class="bi bi-book position-absolute top-0 end-0 m-3 text-muted"></i>
+                        </div>
+                        <div
+                            class="position-relative grid-it border-2 border rounded-3 d-flex flex-column justify-content-between p-3">
+                            <p class="fw-bold fs-5">Tareas Pendientes</p>
+                            <p class="fs-3 fw-bold m-0">12</p>
+                            <p class="text-muted fs-6 m-0">3 vencen esta semana</p>
+                            <i class="bi bi-check2-square position-absolute top-0 end-0 m-3 text-muted"></i>
+                        </div>
+                        <div
+                            class="position-relative grid-it border-2 border rounded-3 d-flex flex-column justify-content-between p-3">
+                            <p class="fw-bold fs-5">Promedio General</p>
+                            <p class="fs-3 fw-bold m-0">88.5</p>
+                            <p class="text-muted fs-6 m-0">+2.1% desde el mes pasado</p>
+                            <i class="bi bi-graph-up-arrow position-absolute top-0 end-0 m-3 text-muted"></i>
+                        </div>
+                        <div
+                            class="position-relative grid-it border-2 border rounded-3 d-flex flex-column justify-content-between p-3">
+                            <p class="fw-bold fs-5">Horas de Estudio</p>
+                            <p class="fs-3 fw-bold m-0">24h</p>
+                            <p class="text-muted fs-6 m-0">Esta semana</p>
+                            <i class="bi bi-clock position-absolute top-0 end-0 m-3 text-muted"></i>
+                        </div>
+                    </div>
+                    <div class="grid-2-1 mt-3">
+                        <div
+                            class="grid-it border border-2 rounded-3 py-3 px-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <p class="fw-bold fs-4 m-0">Próximas Tareas</p>
+                                <p class="text-muted m-0">Tareas y proyectos por entregar pronto</p>
+                            </div>
+                            <div class="border border-2 rounded-4 my-2 p-2 d-flex justify-content-between">
+                                <div class=" d-flex flex-column justify-content-between">
+                                    <p class="fw-bold fs-5 mt-0 ">Ensayo de Historia</p>
+                                    <p class="text-muted mb-0">Historia Mundial</p>
+                                </div>
+                                <div class="d-flex justify-content-center align-items-center px-2 ">
+                                    <p class=" m-0 bg-danger p-1 px-2 rounded-4 text-light">2 días</p>
+                                </div>
+                            </div>
+                            <div class="border border-2 rounded-4 my-2 p-2 d-flex justify-content-between">
+                                <div class=" d-flex flex-column justify-content-between">
+                                    <p class="fw-bold fs-5 mt-0 ">Problema Set #3</p>
+                                    <p class="text-muted mb-0">Historia Mundial</p>
+                                </div>
+                                <div class="d-flex justify-content-center align-items-center px-2 ">
+                                    <p class=" m-0 bg-danger p-1 px-2 rounded-4 text-light">5 días</p>
+                                </div>
+                            </div>
+                            <div class="border border-2 rounded-4 my-2 p-2 d-flex justify-content-between">
+                                <div class=" d-flex flex-column justify-content-between">
+                                    <p class="fw-bold fs-5 mt-0 ">Proyecto Final</p>
+                                    <p class="text-muted mb-0">Programación</p>
+                                </div>
+                                <div class="d-flex justify-content-center align-items-center px-2 ">
+                                    <p class=" m-0 bg-danger p-1 px-2 rounded-4 text-light">1 semana</p>
+                                </div>
+                            </div>
+
+                            <button class="btn border border-2" type="button">
+                                Ver todas las tareas
+                            </button>
+                        </div>
+                        <div
+                            class="grid-it border border-2 rounded-3 py-3 px-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <p class="fw-bold fs-4 m-0">Calificaciones Recientes</p>
+                                <p class="text-muted m-0">Tus últimas calificaciones y comentarios</p>
+                            </div>
+
+                            <div class="border border-2 rounded-4 my-2 p-2 d-flex justify-content-between">
+                                <div class=" d-flex flex-column justify-content-between">
+                                    <p class="fw-bold fs-5 mt-0 ">Examen Parcial</p>
+                                    <p class="text-muted mb-0">Física</p>
+                                </div>
+                                <div class="d-flex justify-content-center align-items-center px-2 ">
+                                    <p class=" m-0 bg-success p-1 px-2 rounded-4 text-light">92/100</p>
+                                </div>
+                            </div>
+
+                            <div class="border border-2 rounded-4 my-2 p-2 d-flex justify-content-between">
+                                <div class=" d-flex flex-column justify-content-between">
+                                    <p class="fw-bold fs-5 mt-0 ">Ensayo #2</p>
+                                    <p class="text-muted mb-0">Literatura</p>
+                                </div>
+                                <div class="d-flex justify-content-center align-items-center px-2 ">
+                                    <p class=" m-0 bg-success p-1 px-2 rounded-4 text-light">87/100</p>
+                                </div>
+                            </div>
+                            <div class="border border-2 rounded-4 my-2 p-2 d-flex justify-content-between">
+                                <div class=" d-flex flex-column justify-content-between">
+                                    <p class="fw-bold fs-5 mt-0 ">Lab Report</p>
+                                    <p class="text-muted mb-0">Química</p>
+                                </div>
+                                <div class="d-flex justify-content-center align-items-center px-2 ">
+                                    <p class=" m-0 bg-success p-1 px-2 rounded-4 text-light">95/100</p>
+                                </div>
+                            </div>
+
+                            <button class="btn border border-2" type="button">
+                                Ver todas las tareas
+                            </button>
+                        </div>
+                    </div>
+                    <div class="border border-2 rounded-3 py-3 px-4 my-3">
+                        <p class="fw-bold fs-4">Progreso de Cursos</p>
+                        <p>Tu avance en cada materia este período</p>
+                        <div class="subgrid-2-1">
+                            <div class="item">
+                                <div class="d-flex justify-content-between">
+                                    <p class="m-0 fw-bold">Matemáticas</p>
+                                    <p class="m-0">78%</p>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar text-bg-dark" role="progressbar" aria-label="Basic example"
+                                        style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="d-flex justify-content-between">
+                                    <p class="m-0 fw-bold">Física</p>
+                                    <p class="m-0">72%</p>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar text-bg-dark" role="progressbar" aria-label="Basic example"
+                                        style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="d-flex justify-content-between">
+                                    <p class="m-0 fw-bold">Historia</p>
+                                    <p class="m-0">85%</p>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar text-bg-dark" role="progressbar" aria-label="Basic example"
+                                        style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="d-flex justify-content-between">
+                                    <p class="m-0 fw-bold">Literatura</p>
+                                    <p class="m-0">90%</p>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar text-bg-dark" role="progressbar" aria-label="Basic example"
+                                        style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border border-2 rounded-3 py-3 px-4 my-3">
+                        <p class="fw-bold fs-4">Acciones Rápidas</p>
+                        <div class="d-flex flex-lg-row flex-column justify-content-between">
+                            <button
+                                class="py-4 d-flex flex-column btn btn-primary rounded-4 border border-3 border-light w-100 mx-4 my-3">
+                                <i class="fs-3 bi bi-calendar-range"></i>
+                                <p class=" fs-3 fw-bold">Ver horario</p>
+                            </button>
+                            <button
+                                class="py-4 d-flex flex-column btn btn-primary rounded-4 border border-3 border-light w-100 mx-4 my-3">
+                                <i class="fs-3 bi bi-journals"></i>
+                                <p class=" fs-3 fw-bold">Explorar cursos</p>
+                            </button>
+                            <button
+                                class="py-4 d-flex flex-column btn btn-primary rounded-4 border border-3 border-light w-100 mx-4 my-3">
+                                <i class="fs-3 bi bi-chat-dots-fill"></i>
+                                <p class=" fs-3 fw-bold">Nuevo chat</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="cursos p-3 seccion" id="cursos">
+                    <div class="container-fluid">
+                        <!-- Top Summary Cards -->
+                        <div class="row g-3 mb-3">
+                            <!-- Cursos Activos -->
+                            <div class="col-lg-4">
+                                <div class="card border-2" style="border-radius: 0.75rem;">
+                                    <div class="card-body">
+                                        <small class="fs-4 fw-semibold">Cursos Activos</small>
+                                        <h4 class="fw-bold mt-2">5</h4>
+                                        <small class="text-muted">1 completado este período</small>
+                                        <div class="position-absolute top-0 end-0 m-3 text-muted"
+                                            style="font-size: 1.25rem;">
+                                            <i class="bi bi-bookmarks"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Progreso Promedio -->
+                            <div class="col-lg-4">
+                                <div class="card  border-2 position-relative">
+                                    <div class="card-body">
+                                        <small class="fs-4 fw-semibold">Progreso Promedio</small>
+                                        <h4 class="fw-bold mt-2">81%</h4>
+                                        <small class="text-muted">+5% desde el mes pasado</small>
+                                        <div class="position-absolute top-0 end-0 m-3 text-muted"
+                                            style="font-size: 1.25rem;">
+                                            <i class="bi bi-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Próxima Clase -->
+                            <div class="col-lg-4">
+                                <div class="card  border-2 position-relative">
+                                    <div class="card-body">
+                                        <small class="fs-4 fw-semibold">Próxima Clase</small>
+                                        <h4 class="fw-bold mt-2">Hoy</h4>
+                                        <small class="text-muted">Matemáticas a las 10:00 AM</small>
+                                        <div class="position-absolute top-0 end-0 m-3 text-muted"
+                                            style="font-size: 1.25rem;">
+                                            <i class="bi bi-arrow-clockwise"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Courses Section -->
+                        <div class="row g-4 mb-4">
+                            <!-- Example course card template -->
+                            <div class="col-lg-4">
+                                <div class="card  border-1 position-relative"
+                                    style="border-top: .4rem solid #0d6efd  !important;">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="fw-bold mb-1">Matemáticas Avanzadas</h6>
+                                                <small class="text-muted">Dr. María González</small>
+                                            </div>
+                                            <span class="badge rounded-pill bg-success align-self-center">Activo</span>
+                                        </div>
+
+                                        <p class="mt-3 text-muted" style="font-size: .875rem;">
+                                            Cálculo diferencial e integral aplicado a problemas reales.
+                                        </p>
+
+                                        <div class="d-flex justify-content-between align-items-center mt-3">
+                                            <small class="fw-semibold">Progreso</small>
+                                            <small class="fw-semibold">78%</small>
+                                        </div>
+                                        <div class="progress" style="height: 5px;">
+                                            <div class="progress-bar " role="progressbar" style="width: 78%;">
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between align-items-center mt-3 text-muted"
+                                            style="font-size: .875rem;">
+                                            <div><i class="bi bi-calendar3"></i> Lun, Mié, Vie 10:00-11:30</div>
+                                            <div><i class="bi bi-people"></i> 24 estudiantes</div>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mt-2 text-muted"
+                                            style="font-size: .875rem;">
+                                            <div><i class="bi bi-clock"></i> Hoy 10:00 AM</div>
+                                            <button class="btn btn-outline-light btn-sm"><i
+                                                    class="bi bi-play-fill me-1"></i>Entrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Historia Mundial -->
+                            <div class="col-lg-4">
+                                <div class="card  border-1 position-relative"
+                                    style="border-top: .4rem solid #198754 !important;">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="fw-bold mb-1">Historia Mundial</h6>
+                                                <small class="text-muted">Prof. Carlos Ruiz</small>
+                                            </div>
+                                            <span class="badge rounded-pill bg-success align-self-center">Activo</span>
+                                        </div>
+
+                                        <p class="mt-3 text-muted" style="font-size: .875rem;">
+                                            Estudio de los principales eventos históricos del siglo XX.
+                                        </p>
+
+                                        <div
+                                            class="d-flex justify-content-between align-items-center mt-3  fw-semibold">
+                                            <small>Progreso</small>
+                                            <small>85%</small>
+                                        </div>
+                                        <div class="progress" style="height: 5px;">
+                                            <div class="progress-bar " role="progressbar" style="width: 85%;">
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between align-items-center mt-3 text-muted"
+                                            style="font-size: .875rem;">
+                                            <div><i class="bi bi-calendar3"></i> Mar, Jue 14:00-15:30</div>
+                                            <div><i class="bi bi-people"></i> 32 estudiantes</div>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mt-2 text-muted"
+                                            style="font-size: .875rem;">
+                                            <div><i class="bi bi-clock"></i> Mañana 2:00 PM</div>
+                                            <button class="btn btn-outline-light btn-sm"><i
+                                                    class="bi bi-play-fill me-1"></i>Entrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Física Cuántica -->
+                            <div class="col-lg-4">
+                                <div class="card  border-1 position-relative"
+                                    style="border-top: .4rem solid #6f42c1 !important;">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="fw-bold mb-1">Física Cuántica</h6>
+                                                <small class="text-muted">Dr. Ana Martín</small>
+                                            </div>
+                                            <span class="badge rounded-pill bg-success align-self-center">Activo</span>
+                                        </div>
+
+                                        <p class="mt-3 text-muted" style="font-size: .875rem;">
+                                            Introducción a los principios fundamentales de la mecánica cuántica.
+                                        </p>
+
+                                        <div
+                                            class="d-flex justify-content-between align-items-center mt-3  fw-semibold">
+                                            <small>Progreso</small>
+                                            <small>72%</small>
+                                        </div>
+                                        <div class="progress" style="height: 5px;">
+                                            <div class="progress-bar " role="progressbar" style="width: 72%;">
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between align-items-center mt-3 text-muted"
+                                            style="font-size: .875rem;">
+                                            <div><i class="bi bi-calendar3"></i> Lun, Mié 16:00-17:30</div>
+                                            <div><i class="bi bi-people"></i> 18 estudiantes</div>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mt-2 text-muted"
+                                            style="font-size: .875rem;">
+                                            <div><i class="bi bi-clock"></i> Lunes 4:00 PM</div>
+                                            <button class="btn btn-outline-light btn-sm"><i
+                                                    class="bi bi-play-fill me-1"></i>Entrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Literatura Española -->
+                            <div class="col-lg-4">
+                                <div class="card  border-1 position-relative"
+                                    style="border-top: .4rem solid #fd7e14 !important;">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="fw-bold mb-1">Literatura Española</h6>
+                                                <small class="text-muted">Prof. Isabel Fernández</small>
+                                            </div>
+                                            <span class="badge rounded-pill bg-success align-self-center">Activo</span>
+                                        </div>
+
+                                        <p class="mt-3 text-muted" style="font-size: .875rem;">
+                                            Análisis de obras clásicas y contemporáneas de la literatura española.
+                                        </p>
+
+                                        <div
+                                            class="d-flex justify-content-between align-items-center mt-3  fw-semibold">
+                                            <small>Progreso</small>
+                                            <small>90%</small>
+                                        </div>
+                                        <div class="progress" style="height: 5px;">
+                                            <div class="progress-bar " role="progressbar" style="width: 90%;">
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between align-items-center mt-3 text-muted"
+                                            style="font-size: .875rem;">
+                                            <div><i class="bi bi-calendar3"></i> Mar, Jue 11:00-12:30</div>
+                                            <div><i class="bi bi-people"></i> 28 estudiantes</div>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mt-2 text-muted"
+                                            style="font-size: .875rem;">
+                                            <div><i class="bi bi-clock"></i> Martes 11:00 AM</div>
+                                            <button class="btn btn-outline-light btn-sm"><i
+                                                    class="bi bi-play-fill me-1"></i>Entrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Programación Web -->
+                            <div class="col-lg-4">
+                                <div class="card  border-1 position-relative"
+                                    style="border-top: .4rem solid #dc3545 !important; ">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="fw-bold mb-1">Programación Web</h6>
+                                                <small class="text-muted">Ing. Roberto Silva</small>
+                                            </div>
+                                            <span class="badge rounded-pill bg-success align-self-center">Activo</span>
+                                        </div>
+
+                                        <p class="mt-3 text-muted" style="font-size: .875rem;">
+                                            Desarrollo de aplicaciones web modernas con React y Node.js.
+                                        </p>
+
+                                        <div
+                                            class="d-flex justify-content-between align-items-center mt-3  fw-semibold">
+                                            <small>Progreso</small>
+                                            <small>65%</small>
+                                        </div>
+                                        <div class="progress" style="height: 5px;">
+                                            <div class="progress-bar " role="progressbar" style="width: 65%;">
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between align-items-center mt-3 text-muted"
+                                            style="font-size: .875rem;">
+                                            <div><i class="bi bi-calendar3"></i> Vie 9:00-12:00</div>
+                                            <div><i class="bi bi-people"></i> 20 estudiantes</div>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mt-2 text-muted"
+                                            style="font-size: .875rem;">
+                                            <div><i class="bi bi-clock"></i> Viernes 9:00 AM</div>
+                                            <button class="btn btn-outline-light btn-sm"><i
+                                                    class="bi bi-play-fill me-1"></i>Entrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Química Orgánica -->
+                            <div class="col-lg-4">
+                                <div class="card  border-1 position-relative"
+                                    style="border-top: .4rem solid #6c757d !important;">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="fw-bold mb-1">Química Orgánica</h6>
+                                                <small class="text-muted">Dra. Patricia López</small>
+                                            </div>
+                                            <span
+                                                class="badge rounded-pill bg-secondary align-self-center">Completado</span>
+                                        </div>
+
+                                        <p class="mt-3 text-muted" style="font-size: .875rem;">
+                                            Estudio de compuestos orgánicos y sus reacciones.
+                                        </p>
+
+                                        <div
+                                            class="d-flex justify-content-between align-items-center mt-3  fw-semibold">
+                                            <small>Progreso</small>
+                                            <small>95%</small>
+                                        </div>
+                                        <div class="progress" style="height: 5px;">
+                                            <div class="progress-bar " role="progressbar" style="width: 95%;">
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between align-items-center mt-3 text-muted"
+                                            style="font-size: .875rem;">
+                                            <div><i class="bi bi-calendar3"></i> Mié, Vie 13:00-14:30</div>
+                                            <div><i class="bi bi-people"></i> 22 estudiantes</div>
+                                        </div>
+                                        <div class="d-flex mt-2 text-muted" style="font-size: .875rem;">
+                                            <i class="bi bi-check-circle me-2"></i> Completado
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Biotecnología Moderna -->
+                            <div class="col-lg-4">
+                                <div class="card border-1 position-relative"
+                                    style="border-top: .4rem solid #0d6efd !important;">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="fw-bold mb-1">Biotecnología Moderna</h6>
+                                                <small class="text-muted">Dr. Ignacio Ferrer</small>
+                                            </div>
+                                            <span class="badge rounded-pill bg-primary align-self-center">En
+                                                curso</span>
+                                        </div>
+
+                                        <p class="mt-3 text-muted" style="font-size: .875rem;">
+                                            Aplicaciones tecnológicas en biología molecular, genética y salud.
+                                        </p>
+
+                                        <div
+                                            class="d-flex justify-content-between align-items-center mt-3  fw-semibold">
+                                            <small>Progreso</small>
+                                            <small>60%</small>
+                                        </div>
+                                        <div class="progress" style="height: 5px;">
+                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 60%;">
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mt-3 text-muted"
+                                            style="font-size: .875rem;">
+                                            <div><i class="bi bi-calendar3"></i> Lun, Mié 10:00-11:30</div>
+                                            <div><i class="bi bi-people"></i> 18 estudiantes</div>
+                                        </div>
+                                        <div class="d-flex mt-2 text-muted" style="font-size: .875rem;">
+                                            <i class="bi bi-hourglass-split me-2"></i> En curso
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Ingeniería Aeroespacial -->
+                            <div class="col-lg-4">
+                                <div class="card border-1 position-relative"
+                                    style="border-top: .4rem solid #20c997 !important;">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="fw-bold mb-1">Ingeniería Aeroespacial</h6>
+                                                <small class="text-muted">Mtra. Lucía Herrera</small>
+                                            </div>
+                                            <span class="badge rounded-pill bg-success align-self-center">En
+                                                curso</span>
+                                        </div>
+
+                                        <p class="mt-3 text-muted" style="font-size: .875rem;">
+                                            Fundamentos de diseño, dinámica y simulación de vehículos espaciales.
+                                        </p>
+
+                                        <div
+                                            class="d-flex justify-content-between align-items-center mt-3  fw-semibold">
+                                            <small>Progreso</small>
+                                            <small>45%</small>
+                                        </div>
+                                        <div class="progress" style="height: 5px;">
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: 45%;">
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between align-items-center mt-3 text-muted"
+                                            style="font-size: .875rem;">
+                                            <div><i class="bi bi-calendar3"></i> Mar, Jue 14:00-15:30</div>
+                                            <div><i class="bi bi-people"></i> 25 estudiantes</div>
+                                        </div>
+                                        <div class="d-flex mt-2 text-muted" style="font-size: .875rem;">
+                                            <i class="bi bi-hourglass-split me-2"></i> En curso
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Diseño Gráfico Digital -->
+                            <div class="col-lg-4">
+                                <div class="card border-1 position-relative"
+                                    style="border-top: .4rem solid #fd7e14 !important;">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="fw-bold mb-1">Diseño Gráfico Digital</h6>
+                                                <small class="text-muted">Lic. Andrés Molina</small>
+                                            </div>
+                                            <span
+                                                class="badge rounded-pill bg-warning text-dark align-self-center">Pendiente</span>
+                                        </div>
+
+                                        <p class="mt-3 text-muted" style="font-size: .875rem;">
+                                            Uso de herramientas digitales para diseño visual, branding y UI/UX.
+                                        </p>
+
+                                        <div
+                                            class="d-flex justify-content-between align-items-center mt-3  fw-semibold">
+                                            <small>Progreso</small>
+                                            <small>0%</small>
+                                        </div>
+                                        <div class="progress" style="height: 5px;">
+                                            <div class="progress-bar" role="progressbar" style="width: 0%;">
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between align-items-center mt-3 text-muted"
+                                            style="font-size: .875rem;">
+                                            <div><i class="bi bi-calendar3"></i> Sáb 09:00-12:00</div>
+                                            <div><i class="bi bi-people"></i> 30 estudiantes</div>
+                                        </div>
+                                        <div class="d-flex mt-2 text-muted" style="font-size: .875rem;">
+                                            <i class="bi bi-clock me-2"></i> Aún no iniciado
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="calendario p-3 seccion" id="calendario">
+                    <div class="container my-4">
+                        <div class="row g-4">
+
+                            <!-- Columna principal -->
+                            <div class="col-lg-8 ">
+                                <!-- Eventos del día -->
+                                <div class="card border border-2 shadow-sm mb-4">
+                                    <div class="card-body">
+                                        <h6 class="fw-bold">martes, 2 de septiembre de 2025</h6>
+                                        <p class="text-muted">No hay eventos para este día</p>
+                                        <div class="text-center my-5">
+                                            <div class="mb-3">
+                                                <i class="bi bi-calendar3" style="font-size: 2rem;"></i>
+                                            </div>
+                                            <h6 class="fw-bold">No hay eventos este día</h6>
+                                            <p class="text-muted">Selecciona otra fecha en el calendario para ver los
+                                                eventos programados.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Próximos Eventos -->
+                                <div class="card border border-2 shadow-sm">
+                                    <div class="card-body">
+                                        <h6 class="fw-bold">Próximos Eventos</h6>
+                                        <p class="text-muted mb-0">Los siguientes eventos programados en tu calendario
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Columna lateral -->
+                            <div class="col-lg-4">
+                                <div class="card border border-2 shadow-sm">
+                                    <div class="card-body">
+                                        <h6 class="fw-bold mb-3">Calendario</h6>
+                                        <p class="text-muted">Haz clic en una fecha</p>
+
+                                        <!-- Calendario (estático de ejemplo) -->
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered text-center align-middle mb-3">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Su</th>
+                                                        <th>Mo</th>
+                                                        <th>Tu</th>
+                                                        <th>We</th>
+                                                        <th>Th</th>
+                                                        <th>Fr</th>
+                                                        <th>Sa</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-muted">31</td>
+                                                        <td>1</td>
+                                                        <td class="table-primary fw-bold">2</td>
+                                                        <td>3</td>
+                                                        <td>4</td>
+                                                        <td>5</td>
+                                                        <td>6</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>7</td>
+                                                        <td>8</td>
+                                                        <td>9</td>
+                                                        <td>10</td>
+                                                        <td>11</td>
+                                                        <td>12</td>
+                                                        <td>13</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>14</td>
+                                                        <td>15</td>
+                                                        <td>16</td>
+                                                        <td>17</td>
+                                                        <td>18</td>
+                                                        <td>19</td>
+                                                        <td>20</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>21</td>
+                                                        <td>22</td>
+                                                        <td>23</td>
+                                                        <td>24</td>
+                                                        <td>25</td>
+                                                        <td>26</td>
+                                                        <td>27</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>28</td>
+                                                        <td>29</td>
+                                                        <td>30</td>
+                                                        <td class="text-muted">1</td>
+                                                        <td class="text-muted">2</td>
+                                                        <td class="text-muted">3</td>
+                                                        <td class="text-muted">4</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <p class="small"><span class="badge bg-primary me-2">&nbsp;</span> Días con
+                                            eventos</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="progreso p-3 seccion" id="progreso">
+                    <div class="container my-4">
+
+                        <!-- Resumen -->
+                        <div class="row g-3 mb-4">
+                            <div class="col-6 col-lg-3">
+                                <div class="card border border-3 shadow-sm text-center p-3">
+                                    <h6>Total Tareas</h6>
+                                    <h4 class="fw-bold">6</h4>
+                                    <small class="text-muted">Este semestre</small>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-3">
+                                <div class="card border border-3 shadow-sm text-center p-3">
+                                    <h6>Pendientes</h6>
+                                    <h4 class="fw-bold">4</h4>
+                                    <small class="text-muted">4 vencidas</small>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-3">
+                                <div class="card border border-3 shadow-sm text-center p-3">
+                                    <h6>Completadas</h6>
+                                    <h4 class="fw-bold">2</h4>
+                                    <small class="text-muted">33% completado</small>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-3">
+                                <div class="card border border-3 shadow-sm text-center p-3">
+                                    <h6>Puntos Totales</h6>
+                                    <h4 class="fw-bold">655</h4>
+                                    <small class="text-muted">Posibles este semestre</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Filtros -->
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <ul class="nav nav-pills">
+                                <li class="nav-item"><a class="nav-link active" href="#">Todas</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Pendientes</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Completadas</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Vencidas</a></li>
+                            </ul>
+                            <div>
+                                <button class="btn btn-outline-secondary btn-sm me-2">Filtrar</button>
+                                <button class="btn btn-primary btn-sm">+ Nueva Tarea</button>
+                            </div>
+                        </div>
+
+                        <!-- Lista de Tareas -->
+                        <div class="card  border border-3 shadow-sm mb-3">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <h6 class="mb-0">Ensayo de Historia Mundial</h6>
+                                        <small class="text-muted">Historia Mundial</small>
+                                    </div>
+                                    <span class="badge bg-danger">Alta · 100 pts</span>
+                                </div>
+                                <p class="mt-2 text-muted">Análisis de las causas de la Primera Guerra Mundial</p>
+
+                                <div class="mb-2">
+                                    <small class="fw-bold">Progreso</small>
+                                    <div class="progress mt-1" style="height: 8px;">
+                                        <div class="progress-bar" role="progressbar" style="width: 60%;"></div>
+                                    </div>
+                                    <small class="text-muted">60%</small>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small><i class="bi bi-file-text"></i> Essay · Vencida hace 370 días</small>
+                                    <button class="btn btn-outline-primary btn-sm">Trabajar en esto</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border border-3 shadow-sm mb-3">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <h6 class="mb-0">Problema Set #3 - Cálculo</h6>
+                                        <small class="text-muted">Matemáticas Avanzadas</small>
+                                    </div>
+                                    <span class="badge bg-secondary">Media · 50 pts</span>
+                                </div>
+                                <p class="mt-2 text-muted">Resolución de integrales complejas</p>
+
+                                <div class="mb-2">
+                                    <small class="fw-bold">Progreso</small>
+                                    <div class="progress mt-1" style="height: 8px;">
+                                        <div class="progress-bar" role="progressbar" style="width: 80%;"></div>
+                                    </div>
+                                    <small class="text-muted">80%</small>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small><i class="bi bi-journal-text"></i> Homework · Vencida hace 368 días</small>
+                                    <button class="btn btn-outline-primary btn-sm">Trabajar en esto</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border border-3 shadow-sm mb-3">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <h6 class="mb-0">Proyecto Final - App Web</h6>
+                                        <small class="text-muted">Programación Web</small>
+                                    </div>
+                                    <span class="badge bg-danger">Alta · 200 pts</span>
+                                </div>
+                                <p class="mt-2 text-muted">Desarrollo de aplicación web completa</p>
+
+                                <div class="mb-2">
+                                    <small class="fw-bold">Progreso</small>
+                                    <div class="progress mt-1" style="height: 8px;">
+                                        <div class="progress-bar" role="progressbar" style="width: 45%;"></div>
+                                    </div>
+                                    <small class="text-muted">45%</small>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small><i class="bi bi-code-slash"></i> Project · Vencida hace 365 días</small>
+                                    <button class="btn btn-outline-primary btn-sm">Trabajar en esto</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border border-3 shadow-sm mb-3">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <h6 class="mb-0">Lab Report - Química</h6>
+                                        <small class="text-muted">Química Orgánica</small>
+                                    </div>
+                                    <span class="badge bg-secondary">Media · 75 pts</span>
+                                </div>
+                                <p class="mt-2 text-muted">Química Orgánica</p>
+
+                                <div class="mb-2">
+                                    <small class="fw-bold">Progreso</small>
+                                    <div class="progress mt-1" style="height: 8px;">
+                                        <div class="progress-bar" role="progressbar" style="width: 0%;"></div>
+                                    </div>
+                                    <small class="text-muted">0%</small>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small><i class="bi bi-flask"></i> Report · Vencida hace 365 días</small>
+                                    <button class="btn btn-outline-primary btn-sm">Trabajar en esto</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="chats p-3 seccion" id="chats">
+                    <div class="container-fluid vh-100 d-flex flex-column">
+                        <div class="row flex-grow-1 h-100">
+
+                            <!-- Sidebar de chats -->
+                            <div id="sidebar-chats"
+                                class="col-12 col-lg-3 border-end p-0 d-flex flex-column d-lg-block d-none h-100">
+
+                                <!-- Header -->
+                                <div class="p-3 border-bottom">
+                                    <h5 class="mb-0">Chats</h5>
+                                </div>
+
+                                <!-- Lista de chats scrollable -->
+                                <div class="list-group list-group-flush flex-grow-1 overflow-auto">
+                                    <!-- CHAT 1 -->
+                                    <a href="#"
+                                        class="list-group-item list-group-item-action d-flex align-items-start gap-2 active"
+                                        onclick="abrirChat()">
+                                        <img src="https://api.dicebear.com/9.x/thumbs/svg?seed=Jocelyn"
+                                            class="rounded-circle" alt="user" width="40" height="40">
+                                        <div>
+                                            <div class="fw-bold">Elmer Homero</div>
+                                            <small class="text-muted">¿Qué tarea era para hoy?</small>
+                                        </div>
+                                    </a>
+                                    <!-- Más chats aquí -->
+                                </div>
+                            </div>
+
+                            <!-- Chat activo -->
+                            <div id="chat-view" class="col-12 col-lg-9 d-flex flex-column p-0 h-100">
+
+                                <!-- Header del chat -->
+                                <div class="p-3 border-bottom d-flex align-items-center gap-3">
+                                    <button class="btn border-2 border d-lg-none me-2" onclick="volverSidebar()">
+                                        <i class="bi bi-arrow-left"></i>
+                                    </button>
+                                    <img src="https://api.dicebear.com/9.x/thumbs/svg?seed=Jocelyn"
+                                        class="rounded-circle" alt="user" width="40" height="40">
+                                    <div>
+                                        <div class="fw-bold">Elmer Homero</div>
+                                        <small class="text-muted">En línea</small>
+                                    </div>
+                                </div>
+
+                                <!-- Cuerpo de chat (scrollable) -->
+                                <div class="flex-grow-1 overflow-auto p-3 d-flex flex-column">
+                                    <div class="d-flex flex-column gap-3 flex-grow-1">
+                                        <div class="d-flex">
+                                            <div class="border border-2 p-2 rounded shadow-sm" style="max-width: 70%;">
+                                                <small>Hola, ¿cómo estás?</small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end">
+                                            <div class="bg-primary text-white p-2 rounded shadow-sm"
+                                                style="max-width: 70%;">
+                                                <small>Bien, ¿y tú?</small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="border border-2 p-2 rounded shadow-sm" style="max-width: 70%;">
+                                                <small>¿Qué tarea era para hoy?</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Input -->
+                                <div class="border-top p-3">
+                                    <form class="d-flex gap-2">
+                                        <input type="text" class="form-control" placeholder="Escribe un mensaje...">
+                                        <button class="btn btn-primary" type="submit">
+                                            <i class="bi bi-send"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="perfil p-3 seccion" id="perfil">
+                    <div class="container my-4">
+                        <div class="row g-4">
+
+                            <!-- Información Personal -->
+                            <div class="col-lg-8">
+                                <div class="card border border-3 shadow-sm">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center me-3"
+                                                style="width:60px; height:60px; font-size:20px;">
+                                                MG
+                                            </div>
+                                            <div>
+                                                <h5 class="mb-0">María García</h5>
+                                                <small>3º Secundaria - Sección A</small><br>
+                                                <span class="badge bg-success mt-1">Estudiante Activo</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <p class="mb-1"><strong>Nombre Completo:</strong> María García</p>
+                                                <p class="mb-1"><strong>Teléfono:</strong> +51 987 654 321</p>
+                                                <p class="mb-1"><strong>Dirección:</strong> Av. Principal 123, Lima,
+                                                    Perú</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="mb-1"><strong>Correo Electrónico:</strong> alumno1@colegio.edu
+                                                </p>
+                                                <p class="mb-1"><strong>Fecha de Nacimiento:</strong> 14/5/2008</p>
+                                            </div>
+                                        </div>
+
+                                        <p><strong>Descripción Personal:</strong>
+                                            Estudiante dedicado con interés en matemáticas y ciencias. Me gusta
+                                            participar en actividades extracurriculares y proyectos de investigación.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Información Académica -->
+                                <div class="card border border-3 shadow-sm mt-4">
+                                    <div class="card-body">
+                                        <h6 class="mb-3">Información Académica</h6>
+                                        <div class="d-flex flex-wrap gap-3 mb-3">
+                                            <div><strong>Grado Actual:</strong> 3º Secundaria</div>
+                                            <div><strong>Sección:</strong> A</div>
+                                            <div><strong>Año Académico:</strong> 2024</div>
+                                        </div>
+
+                                        <p><strong>Materias de Interés:</strong>
+                                            <span class="badge bg-secondary">Matemáticas</span>
+                                            <span class="badge bg-secondary">Ciencias</span>
+                                            <span class="badge bg-secondary">Tecnología</span>
+                                            <span class="badge bg-secondary">Deportes</span>
+                                        </p>
+
+                                        <p><strong>Contacto de Emergencia:</strong><br>
+                                            Ana García (Madre) - +51 987 123 456
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Lateral derecho -->
+                            <div class="col-lg-4">
+                                <!-- Rendimiento Académico -->
+                                <div class="card border border-3 shadow-sm mb-4">
+                                    <div class="card-body text-center">
+                                        <h6 class="mb-3">Rendimiento Académico</h6>
+                                        <h2 class="fw-bold">17.5</h2>
+                                        <p class="text-muted">Promedio General</p>
+                                        <div class="d-flex justify-content-around">
+                                            <div><strong>8</strong><br><small>Cursos</small></div>
+                                            <div><strong>24</strong><br><small>Tareas</small></div>
+                                            <div><strong>95%</strong><br><small>Asistencia</small></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Calificaciones Recientes -->
+                                <div class="card border border-3 shadow-sm">
+                                    <div class="card-body">
+                                        <h6 class="mb-3">Calificaciones Recientes</h6>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span>Matemáticas <small class="text-muted">(14/3/2024)</small></span>
+                                                <span class="badge bg-primary">18/20</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span>Historia <small class="text-muted">(13/3/2024)</small></span>
+                                                <span class="badge bg-primary">17/20</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span>Ciencias <small class="text-muted">(12/3/2024)</small></span>
+                                                <span class="badge bg-primary">19/20</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between">
+                                                <span>Literatura <small class="text-muted">(11/3/2024)</small></span>
+                                                <span class="badge bg-primary">16/20</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="configuracion p-3 seccion" id="config">
+                    <div class=" my-5">
+                        <h1 class="mb-4">Configuración</h1>
+                        <p class="mb-5">Personaliza tu experiencia en el sistema académico</p>
+
+                        <!-- Apariencia -->
+                        <section class="mb-5 border border-3 rounded-3 p-4">
+                            <h3>Apariencia</h3>
+                            <p>Personaliza el tema y la apariencia de la aplicación</p>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="temaOscuro">
+                                <label class="form-check-label" for="temaOscuro">Cambia entre tema claro y
+                                    oscuro</label>
+                            </div>
+                        </section>
+
+                        <!-- Notificaciones -->
+                        <section class="mb-5 border border-3 rounded-3 p-4">
+                            <h3>Notificaciones</h3>
+                            <p>Configura qué notificaciones deseas recibir</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="notificacionFechas">
+                                <label class="form-check-label" for="notificacionFechas">Recordatorios de fechas de
+                                    entrega y exámenes</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="notificacionCalificaciones">
+                                <label class="form-check-label" for="notificacionCalificaciones">Notificaciones cuando
+                                    recibas nuevas calificaciones</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="notificacionAnuncios">
+                                <label class="form-check-label" for="notificacionAnuncios">Anuncios importantes de la
+                                    institución</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="notificacionMensajes">
+                                <label class="form-check-label" for="notificacionMensajes">Nuevos mensajes de
+                                    docentes</label>
+                            </div>
+                        </section>
+
+                        <!-- Privacidad -->
+                        <section class="mb-5 border border-3 rounded-3 p-4">
+                            <h3>Privacidad</h3>
+                            <p>Controla qué información es visible para otros</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="privacidadPerfil">
+                                <label class="form-check-label" for="privacidadPerfil">Permite que otros estudiantes
+                                    vean tu perfil</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="privacidadEmail">
+                                <label class="form-check-label" for="privacidadEmail">Permite que otros vean tu
+                                    dirección de email</label>
+                            </div>
+                        </section>
+
+                        <!-- Idioma y Región -->
+                        <section class="mb-5 border border-3 rounded-3 p-4">
+                            <h3>Idioma y Región</h3>
+                            <p>Configura tu idioma y zona horaria</p>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="selectIdioma" class="form-label">Idioma</label>
+                                    <select class="form-select" id="selectIdioma">
+                                        <option selected>Español</option>
+                                        <option>Inglés</option>
+                                        <option>Francés</option>
+                                        <option>Alemán</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="selectRegion" class="form-label">Zona horaria</label>
+                                    <select class="form-select" id="selectRegion">
+                                        <option selected>Lima, Perú (UTC-5)</option>
+                                        <option>Ciudad de México, México (UTC-6)</option>
+                                        <option>Buenos Aires, Argentina (UTC-3)</option>
+                                        <option>Madrid, España (UTC+1)</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </section>
+
+                        <!-- Cambiar Contraseña -->
+                        <section class="mb-5 border border-3 rounded-3 p-4">
+                            <h3>Cambiar Contraseña</h3>
+                            <p>Actualiza tu contraseña para mantener tu cuenta segura</p>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="passwordActual" class="form-label">Ingresa tu contraseña actual</label>
+                                    <input type="password" class="form-control" id="passwordActual"
+                                        placeholder="Contraseña actual">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="passwordNueva" class="form-label">Ingresa tu nueva contraseña</label>
+                                    <input type="password" class="form-control" id="passwordNueva"
+                                        placeholder="Nueva contraseña">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="passwordConfirmar" class="form-label">Confirma tu nueva
+                                        contraseña</label>
+                                    <input type="password" class="form-control" id="passwordConfirmar"
+                                        placeholder="Confirma nueva contraseña">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Actualizar contraseña</button>
+                            </form>
+                        </section>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- JS de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <!-- <script>
+        const body = document.body;
+        const temaOscuro = document.getElementById("temaOscuro");
+
+        // Al cargar, aplicar el tema guardado
+        const temaGuardado = localStorage.getItem("tema");
+        if (temaGuardado) {
+            body.setAttribute("data-bs-theme", temaGuardado);
+            temaOscuro.checked = temaGuardado === "dark"; // actualizar el checkbox
+        }
+
+        // Al cambiar el checkbox
+        temaOscuro.addEventListener("change", () => {
+            if (temaOscuro.checked) {
+            body.setAttribute("data-bs-theme", "dark");
+            localStorage.setItem("tema", "dark");
+            } else {
+            body.setAttribute("data-bs-theme", "light");
+            localStorage.setItem("tema", "light");
+            }
+        });
+
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.querySelector('.main-content');
+        const toggleBtn = document.getElementById('toggleMenu');
+        const toggleBtn_mb = document.getElementById('toggleMenu-mobile');
+        const toggleIcon = document.getElementById('toggleIcon')
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            mainContent.classList.toggle('expanded');
+            // Cambiar icono de flecha
+            toggleIcon.classList.toggle('bi-arrow-bar-left');
+            toggleIcon.classList.toggle('bi-arrow-bar-right');
+        });
+        toggleBtn_mb.addEventListener('click', () => {
+            if (window.innerWidth < 992) {
+                sidebar.classList.toggle('collapsed');
+                mainContent.classList.toggle('expanded');
+                // Cambiar icono de flecha
+                toggleIcon.classList.toggle('bi-arrow-bar-left');
+                toggleIcon.classList.toggle('bi-arrow-bar-right');
+            }
+        });
+
+        const dashboardBtn = document.getElementById('dashboardBtn');
+        const cursosBtn = document.getElementById('cursosBtn');
+        const calendarioBtn = document.getElementById('calendarioBtn');
+        const progresoBtn = document.getElementById('progresoBtn');
+        const chatsBtn = document.getElementById('chatsBtn');
+        const perfilBtn = document.getElementById('perfilBtn');
+        const configBtn = document.getElementById('configBtn');
+
+        // Lista de botones y sus divs relacionados
+        const botones = [
+            { btn: dashboardBtn, divId: 'dashboard' },
+            { btn: cursosBtn, divId: 'cursos' },
+            { btn: calendarioBtn, divId: 'calendario' },
+            { btn: progresoBtn, divId: 'progreso' },
+            { btn: chatsBtn, divId: 'chats' },
+            { btn: perfilBtn, divId: 'perfil' },
+            { btn: configBtn, divId: 'config' }
+        ];
+
+        // Función para ocultar todos los divs
+        function ocultarTodosLosDivs() {
+            botones.forEach(({ divId }) => {
+                document.getElementById(divId).style.display = 'none';
+            });
+        }
+
+        // Añadir eventos a los botones
+        botones.forEach(({ btn, divId }) => {
+            btn.addEventListener('click', () => {
+                // Quitar clase activa de todos los botones
+                botones.forEach(({ btn }) => btn.classList.remove('btn-primary'));
+
+                // Agregar clase al botón clickeado
+                btn.classList.add('btn-primary');
+
+                // Ocultar todos los divs
+                ocultarTodosLosDivs();
+
+                // Mostrar el div correspondiente
+                document.getElementById(divId).style.display = 'block';
+            });
+        });
+
+        // Mostrar uno por defecto al cargar (ej: dashboard)
+        // document.addEventListener('DOMContentLoaded', () => {
+        //     dashboardBtn.classList.add('btn-primary');
+        //     ocultarTodosLosDivs();
+        //     document.getElementById('dashboard').style.display = 'block';
+        // });
+        function abrirChat() {
+            // En pantallas chicas, ocultar el sidebar y mostrar el chat
+            if (window.innerWidth < 992) { // Bootstrap lg = 992px
+                document.getElementById('sidebar-chats').classList.add('d-none');
+                document.getElementById('chat-view').classList.remove('d-none');
+            }
+        }
+
+        function volverSidebar() {
+            document.getElementById('sidebar-chats').classList.remove('d-none');
+            document.getElementById('chat-view').classList.add('d-none');
+        }
+
+        // Detectar tamaño al cargar y mostrar solo lo necesario
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.innerWidth < 992) {
+                document.getElementById('sidebar-chats').classList.remove('d-lg-block');
+                document.getElementById('chat-view').classList.add('d-none');
+            }
+        });
+    </script> -->
+    <script>
+        const body = document.body;
+        const temaOscuro = document.getElementById("temaOscuro");
+
+        // Al cargar, aplicar el tema guardado
+        const temaGuardado = localStorage.getItem("tema");
+        if (temaGuardado) {
+            body.setAttribute("data-bs-theme", temaGuardado);
+            temaOscuro.checked = temaGuardado === "dark"; // actualizar el checkbox
+        }
+
+        // Al cambiar el checkbox
+        temaOscuro.addEventListener("change", () => {
+            if (temaOscuro.checked) {
+                body.setAttribute("data-bs-theme", "dark");
+                localStorage.setItem("tema", "dark");
+            } else {
+                body.setAttribute("data-bs-theme", "light");
+                localStorage.setItem("tema", "light");
+            }
+        });
+
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.querySelector('.main-content');
+        const toggleBtn = document.getElementById('toggleMenu');
+        const toggleBtn_mb = document.getElementById('toggleMenu-mobile');
+        const toggleIcon = document.getElementById('toggleIcon');
+
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            mainContent.classList.toggle('expanded');
+            toggleIcon.classList.toggle('bi-arrow-bar-left');
+            toggleIcon.classList.toggle('bi-arrow-bar-right');
+        });
+
+        toggleBtn_mb.addEventListener('click', () => {
+            if (window.innerWidth < 992) {
+                sidebar.classList.toggle('collapsed');
+                mainContent.classList.toggle('expanded');
+                toggleIcon.classList.toggle('bi-arrow-bar-left');
+                toggleIcon.classList.toggle('bi-arrow-bar-right');
+            }
+        });
+
+        const dashboardBtn = document.getElementById('dashboardBtn');
+        const cursosBtn = document.getElementById('cursosBtn');
+        const calendarioBtn = document.getElementById('calendarioBtn');
+        const progresoBtn = document.getElementById('progresoBtn');
+        const chatsBtn = document.getElementById('chatsBtn');
+        const perfilBtn = document.getElementById('perfilBtn');
+        const configBtn = document.getElementById('configBtn');
+
+        const botones = [
+            { btn: dashboardBtn, divId: 'dashboard' },
+            { btn: cursosBtn, divId: 'cursos' },
+            { btn: calendarioBtn, divId: 'calendario' },
+            { btn: progresoBtn, divId: 'progreso' },
+            { btn: chatsBtn, divId: 'chats' },
+            { btn: perfilBtn, divId: 'perfil' },
+            { btn: configBtn, divId: 'config' }
+        ];
+
+        function ocultarTodosLosDivs() {
+            botones.forEach(({ divId }) => {
+                document.getElementById(divId).style.display = 'none';
+            });
+        }
+
+        botones.forEach(({ btn, divId }) => {
+            btn.addEventListener('click', () => {
+                botones.forEach(({ btn }) => btn.classList.remove('btn-primary'));
+                btn.classList.add('btn-primary');
+                ocultarTodosLosDivs();
+                document.getElementById(divId).style.display = 'block';
+
+                // 🔥 NUEVO: cerrar sidebar en modo celular
+                if (window.innerWidth < 992) {
+                    sidebar.classList.add('collapsed');
+                    mainContent.classList.remove('expanded');
+                }
+            });
+        });
+
+        function abrirChat() {
+            if (window.innerWidth < 992) {
+                document.getElementById('sidebar-chats').classList.add('d-none');
+                document.getElementById('chat-view').classList.remove('d-none');
+            }
+        }
+
+        function volverSidebar() {
+            document.getElementById('sidebar-chats').classList.remove('d-none');
+            document.getElementById('chat-view').classList.add('d-none');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.innerWidth < 992) {
+                const sidebarChats = document.getElementById('sidebar-chats');
+                const chatView = document.getElementById('chat-view');
+
+                // Mostrar lista de chats por defecto en móvil
+                sidebarChats.classList.remove('d-lg-block');
+                sidebarChats.classList.remove('d-none');
+                chatView.classList.add('d-none');
+            } else {
+                // En escritorio, mostrar ambos
+                document.getElementById('sidebar-chats').classList.add('d-lg-block');
+                document.getElementById('chat-view').classList.remove('d-none');
+            }
+        });
+        window.addEventListener('resize', () => {
+            const sidebarChats = document.getElementById('sidebar-chats');
+            const chatView = document.getElementById('chat-view');
+
+            if (window.innerWidth >= 992) {
+                // En escritorio deben estar ambos visibles
+                sidebarChats.classList.add('d-lg-block');
+                sidebarChats.classList.remove('d-none');
+                chatView.classList.remove('d-none');
+            } else {
+                // En móvil, por defecto mostrar la lista
+                sidebarChats.classList.remove('d-lg-block');
+                sidebarChats.classList.remove('d-none');
+                chatView.classList.add('d-none');
+            }
+        });
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Iconos de Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- CSS de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>login</title>
+</head>
+<body class="overflow-hidden">
+    <!-- Contenedor principal que divide la pantalla en dos columnas -->
+    <div class="container-fluid d-flex flex-md-row flex-column m-0 p-0 vh-100">
+        <!-- Columna de imagen, visible solo en pantallas grandes -->
+        <div class=" d-none d-lg-block col-xl-8 col-lg-7 bg-dark">
+            <img 
+                src="https://i0.wp.com/enfermeriacreativa.com/wp-content/uploads/2019/07/placeholder.png?ssl=1" 
+                alt="Login Image" 
+                class="img-fluid h-100 object-fit-cover opacity-75"
+            >
+        </div>
+        <!-- Columna de login -->
+        <div class="container-fluid d-flex vh-100 justify-content-center align-items-center p-0">
+            <div class="card border-0 rounded-0 w-100 m-1" style="min-width: 350px;">
+                
+                <!-- Título y autor -->
+                <div class="card-title m-auto m-0 p-0">
+                    <p class="fw-bold text-primary text-decoration-underline fw-bold mb-0" style="font-size: 2.76em">
+                        <i class="bi bi-mortarboard-fill m-0 p-0"> </i>
+                        EduTemplate
+                    </p>
+                    <p class="text-muted text-end m-0 p-0">
+                        por <strong>WGdev</strong>
+                    </p>
+                </div>
+                
+                <!-- Formulario de inicio de sesión -->
+                <form class="card-body mx-5">
+                    <h4 class=" text-start mb-4">
+                    Iniciar Sesión
+                </h4>
+                    <!-- Campo de usuario -->
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Usuario</label>
+                        <input type="text" class="form-control" id="username" placeholder="Ingresa tu usuario">
+                    </div>
+                    <!-- Campo de contraseña -->
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña">
+                    </div>
+                    <!-- Enlace para recuperar contraseña -->
+                    <div class="mb-3 text-end">
+                        <a href="#" class="text-decoration-none text-primary">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    <!-- Botón de ingreso -->
+                    <a  href="student.html" class="btn btn-primary w-100 fs-5">
+                        Ingresar
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- JS de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
